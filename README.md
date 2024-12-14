@@ -1,7 +1,7 @@
 # FitTrack
 
 ## Overview
-FitTrack is a fitness tracking application designed to help users manage their fitness goals effectively. It tracks calorie intake, activities like walking, jogging, and biking, and monitors weight trends over time. By leveraging Object-Oriented Programming (OOP) principles, FitTrack ensures modularity, scalability, and ease of use, enabling users to maintain a healthy lifestyle.
+FitTrack is a fitness-tracking application designed to help users manage their health and fitness goals. It calculates personalized daily caloric needs and tracks user activities like walking, running, and biking. The goal of this program is to promote healthy habits and make fitness management easier and more effective.
 
 ---
 
