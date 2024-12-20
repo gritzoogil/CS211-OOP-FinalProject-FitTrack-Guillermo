@@ -28,7 +28,6 @@ public class DatabaseConnection {
             // 2. create table database if not exists
             String createDatabaseSQL = "CREATE DATABASE IF NOT EXISTS fittrack";
             stmt.executeUpdate(createDatabaseSQL);
-            System.out.println("Database 'fittrack' created or already exists.");
 
             // 3. close connection and connect to database
             connection.close();

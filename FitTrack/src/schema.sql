@@ -1,9 +1,14 @@
 CREATE DATABASE IF NOT EXISTS fittrack;
 
+USE fittrack;
+
 CREATE TABLE IF NOT EXISTS `User` (
     id INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(50) NOT NULL,
+    sex VARCHAR(6) NOT NULL,
     birth_year INT NOT NULL,
+    height DOUBLE NOT NULL,
+    weight DOUBLE NOT NULL,
     start_date DATE,
     end_date DATE,
     goal ENUM('lose', 'gain', 'maintain') NOT NULL
@@ -16,6 +21,7 @@ CREATE TABLE IF NOT EXISTS WeightEntry (
     PRIMARY KEY (user_id, `date`),
     FOREIGN KEY (user_id) REFERENCES `User`(id)
 );
+
 
 CREATE TABLE IF NOT EXISTS CalorieEntry (
     user_id INT,

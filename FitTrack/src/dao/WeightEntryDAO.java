@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WeightEntryDAO {
 
-    public void addWeightEntry(WeightEntry entry) throws SQLException {
+    public static void addWeightEntry(WeightEntry entry) throws SQLException {
         String query = "INSERT INTO WeightEntry (user_id, date, weight) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -23,6 +23,41 @@ public class WeightEntryDAO {
     public List<WeightEntry> getWeightEntriesByUserId(int userId) throws SQLException {
         List<WeightEntry> entries = new ArrayList<>();
         String query = "SELECT * FROM WeightEntry WHERE user_id = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                entries.add(new WeightEntry(
+                    rs.getInt("user_id"),
+                    rs.getDate("date"),
+                    rs.getDouble("weight")
+                ));
+            }
+        }
+        return entries;
+    }
+    
+    public WeightEntry getCurrentWeightByUserId(int userId) throws SQLException {
+        String query = "SELECT * FROM WeightEntry WHERE user_id = ? ORDER BY date DESC LIMIT 1";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new WeightEntry(
+                    rs.getInt("user_id"),
+                    rs.getDate("date"),
+                    rs.getDouble("weight")
+                );
+            }
+        }
+        return null;
+    }
+    
+    public List<WeightEntry> getWeightEntriesLast7Days(int userId) throws SQLException {
+        List<WeightEntry> entries = new ArrayList<>();
+        String query = "SELECT * FROM WeightEntry WHERE user_id = ? AND date >= CURDATE() - INTERVAL 7 DAY";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, userId);
