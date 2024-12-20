@@ -35,7 +35,7 @@ public class DatabaseConnection {
             stmt = connection.createStatement();
 
             // 4. execute table scripts
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\GilBryan\\Documents\\Projects\\CS 2nd Year\\Final Project\\CS211-OOP-FinalProject-FitTrack-Guillermo\\FitTrack\\src\\schema.sql"));
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\GilBryan\\Documents\\Projects\\CS 2nd Year\\Final Project\\CS211-OOP-FinalProject-FitTrack-Guillermo\\FitTrack\\src\\init.sql"));
             StringBuilder sqlBuilder = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {

@@ -77,7 +77,7 @@ public class CalorieCalculator {
 
                 double averageWeight = totalWeight / weightEntries.size();
 
-                // Choose the appropriate goal class
+                // choose the appropriate goal class
                 CalorieAdjustmentGoal adjustmentGoal;
                 switch (goal.toLowerCase()) {
                     case "lose":
@@ -93,7 +93,6 @@ public class CalorieCalculator {
                         throw new IllegalArgumentException("Invalid goal.");
                 }
 
-                // Delegate the responsibility to the goal class
                 return adjustmentGoal.adjustCalories(latestCalories, firstWeight, averageWeight);
             } catch (SQLException e) {
                 e.printStackTrace();
