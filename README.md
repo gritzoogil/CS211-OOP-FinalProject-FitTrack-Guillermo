@@ -55,7 +55,7 @@ git clone https://github.com/gritzoogil/CS211-OOP-FinalProject-FitTrack-Guillerm
     private static final String USER = "your_username";  
     private static final String PASS = "your_password"; 
 
-   BufferedReader reader = new BufferedReader(new FileReader("file_location_of_init.sql"));
+    BufferedReader reader = new BufferedReader(new FileReader("file_location_of_init.sql"));
    ```
 
 #### 3. Open the Project in Eclipse and run
